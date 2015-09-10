@@ -1,6 +1,9 @@
 package staffmode.main;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
@@ -46,10 +49,12 @@ public class Main extends JavaPlugin {
 	private AdminGui Gui;
 	SaveInventory si = new SaveInventory();
 	protected UpdateChecker updateChecker;
+	public static Main instance;
 	
 	
 	public void onEnable() {
 		registerCommands();
+		EnableInstance();
 		loadListeners();
 		SetUpConfig();
 		Updater();
@@ -58,10 +63,20 @@ public class Main extends JavaPlugin {
 		
 	}
 	public void onDisable() {
-		SaveConfig();
+		DisableInstance();
 	}
 
+	private void DisableInstance() {
+		instance = null;
 		
+	}
+	private void EnableInstance() {
+		instance = this;
+	}
+		
+		public static Main getInstance() {
+			return instance;
+		}
 
 	
 	private void registerCommands() {
@@ -115,6 +130,7 @@ public class Main extends JavaPlugin {
 							+ updateChecker.getLink());
 		}
 	}
+	@SuppressWarnings("unused")
 	private void SaveConfig() {
 		ConfigManager.getInstance().SaveConfig();
 		ConfigManager.getInstance().SaveDataConfig();	
@@ -130,5 +146,43 @@ public class Main extends JavaPlugin {
 						"StaffMode Metrics Had A Problem Starting! Dont Worry! You May Still Use The Plugin!");
 		    }
 	}
-	
+	    public void logToFile(String message)
+	     
+        {
+     
+            try
+            {
+                File dataFolder = getDataFolder();
+                if(!dataFolder.exists())
+                {
+                    dataFolder.mkdir();
+                }
+     
+                File saveTo = new File(getDataFolder(), "StaffChatLogger.yml");
+                if (!saveTo.exists())
+                {
+                    saveTo.createNewFile();
+                }
+     
+     
+                FileWriter fw = new FileWriter(saveTo, true);
+     
+                PrintWriter pw = new PrintWriter(fw);
+     
+                pw.println(message);
+     
+                pw.flush();
+     
+                pw.close();
+     
+            } catch (IOException e)
+            {
+     
+                e.printStackTrace();
+     
+            }
+            
+     
+        }
 	}
+	

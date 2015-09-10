@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
+
  
 public class ConfigManager {
 	
@@ -20,7 +21,7 @@ public class ConfigManager {
         public static ConfigManager getInstance() {
                 return instance;
         }
-       
+        
         Plugin p;
        
         FileConfiguration config;
@@ -28,6 +29,8 @@ public class ConfigManager {
        
         FileConfiguration data;
         File dfile;
+        
+        
        
         public void setup(Plugin p) {
                 cfile = new File(p.getDataFolder(), "config.yml");
@@ -36,7 +39,7 @@ public class ConfigManager {
                 SaveConfig();
                
                 if (!p.getDataFolder().exists()) {
-                        p.getDataFolder().mkdir();
+
                 }
                
                 dfile = new File(p.getDataFolder(), "data.yml");
@@ -53,6 +56,26 @@ public class ConfigManager {
                 data = YamlConfiguration.loadConfiguration(dfile);
         }
        
+        public FileConfiguration getData() {
+                return data;
+        }
+       
+        public void SaveDataConfig() {
+                try {
+                        data.save(dfile);
+                }
+                catch (IOException e) {
+                        Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
+                }
+        }
+       
+        public void reloadData() {
+                data = YamlConfiguration.loadConfiguration(dfile);
+        }    
+        public FileConfiguration getConfig() {
+                return config;
+        }
+       
         public void SaveConfig() {
                 try {
                         config.save(cfile);
@@ -61,29 +84,10 @@ public class ConfigManager {
                         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save config.yml!");
                 }
         }
-       
-        public void reloadConfigs() {
-                data = YamlConfiguration.loadConfiguration(dfile);
+        public void reloadConfig() {
                 config = YamlConfiguration.loadConfiguration(cfile);
         }
        
-        public FileConfiguration getConfig() {
-                return config;
-        }
-        public FileConfiguration getData() {
-            return data;
-        }
-        public void SaveDataConfig() {
-        	
-            try {
-                data.save(dfile);
-        }
-        catch (IOException e) {
-                Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
-        }
-}
-        
-
         public PluginDescriptionFile getDesc() {
                 return p.getDescription();
         }

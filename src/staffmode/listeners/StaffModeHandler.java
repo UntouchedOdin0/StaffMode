@@ -19,10 +19,9 @@ public class StaffModeHandler implements Listener {
 	@EventHandler(priority=EventPriority.HIGH, ignoreCancelled=true)
 	public void onPlayerChat(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
-		
 		if (StaffModeManager.getInstance().isInStaffMode(p)) e.setFormat
 			(ChatColor.translateAlternateColorCodes('&', ConfigManager.getInstance()
-					.getConfig().getString("Messages.StaffModePrefix") + p.getDisplayName()  + ChatColor.AQUA  + e.getMessage()));
+					.getConfig().getString("Messages.StaffModePrefix") +  e.getPlayer().getDisplayName()  + ChatColor.AQUA  + " " +  e.getMessage()));
 	}
 	  public int getPing(Player p)
 	  {
