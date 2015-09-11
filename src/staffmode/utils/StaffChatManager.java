@@ -2,7 +2,6 @@ package staffmode.utils;
 
 import java.util.ArrayList;
 
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
@@ -20,8 +19,8 @@ public class StaffChatManager implements Listener {
 
 	private ArrayList<Player> StaffChat = new ArrayList<Player>();
 
-	public boolean isInStaffChat(HumanEntity humanEntity) {
-		return StaffChat.contains(humanEntity);
+	public boolean isInStaffChat(Player p) {
+		return StaffChat.contains(p);
 	}
 
 	public void setStaffChat(Player p, boolean b) {

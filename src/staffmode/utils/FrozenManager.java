@@ -2,7 +2,6 @@ package staffmode.utils;
 
 import java.util.ArrayList;
 
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 
 public class FrozenManager {
@@ -19,9 +18,9 @@ public class FrozenManager {
 
 	private ArrayList<Player> frozen = new ArrayList<Player>();
 
-	public boolean isfrozen(HumanEntity humanEntity) {
-		return frozen.contains(humanEntity);
-	}
+	public boolean isfrozen(Player p) {
+		return frozen.contains(p);
+	}	
 
 	public void setfrozenMode(Player p, boolean b) {
 		if (b) {

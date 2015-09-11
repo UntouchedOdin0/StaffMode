@@ -2,7 +2,6 @@ package staffmode.utils;
 
 import java.util.ArrayList;
 
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
@@ -20,8 +19,8 @@ public class VanishManager implements Listener {
 
 	private ArrayList<Player> Vanish = new ArrayList<Player>();
 
-	public boolean isVanished(HumanEntity humanEntity) {
-		return Vanish.contains(humanEntity);
+	public boolean isVanished(Player p) {
+		return Vanish.contains(p);
 	}
 
 	public void setVanish(Player p, boolean b) {

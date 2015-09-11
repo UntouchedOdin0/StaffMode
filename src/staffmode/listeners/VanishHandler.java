@@ -30,7 +30,8 @@ public class VanishHandler implements Listener {
 
 	@EventHandler
 	public void onPlayerClick(InventoryClickEvent e) {
-		if (VanishManager.getInstance().isVanished(e.getWhoClicked()))
+		Player p = (Player) e.getWhoClicked();
+		if (VanishManager.getInstance().isVanished(p))
 			e.setCancelled(true);
 	}
 

@@ -65,6 +65,7 @@ public class SaveInventory {
         p.addPotionEffects(poteff);
         p.getInventory().setContents(content);
         p.getInventory().setArmorContents(armor);
+        p.getPlayer().updateInventory();
 	}
 	
 	public void removeInventory(Player p) {

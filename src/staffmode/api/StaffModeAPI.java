@@ -55,4 +55,36 @@ public class StaffModeAPI
 	public static void setChatMuted(boolean b) {
 		ChatManager.getInstance().setMuted(b);
 	}
+	/**
+	 * Check if Chat is Muted
+	 */
+	public static void isChatMuted() {
+		ChatManager.getInstance().isMuted();
+		
+	}
+	/**
+	 * Check If Player is in StaffCjat
+	 */
+	public static void isinStaffChat(Player p) {
+		StaffChatManager.getInstance().isInStaffChat(p);
+	}
+	/**
+	 * Check If Player is Frozen
+	 */
+	public static void isfrozen(Player p) {
+		FrozenManager.getInstance().isfrozen(p);
+	}
+	/**
+	 * Check If Player Is In StaffMode
+	 */
+	public static void isInStaffMode(Player p) {
+		StaffModeManager.getInstance().isInStaffMode(p);
+	}
+	/**
+	 * Enable / Disable Vanish
+	 */
+	public static void isVanished(Player p) {
+		VanishManager.getInstance().isVanished(p);
+		
+	}
 }

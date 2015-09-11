@@ -32,6 +32,7 @@ import staffmode.listeners.FullJoin;
 import staffmode.listeners.PlayerChat;
 import staffmode.listeners.PlayerFrozen;
 import staffmode.listeners.PlayerJoin;
+import staffmode.listeners.PlayerQuit;
 import staffmode.listeners.StaffChatHandler;
 import staffmode.listeners.StaffModeHandler;
 import staffmode.listeners.StaffModeItemsHandler;
@@ -102,7 +103,7 @@ public class Main extends JavaPlugin {
 		
 		}
 	private void loadListeners() {
-		Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerJoin(this), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerChat(), this);
 		Bukkit.getPluginManager().registerEvents(new StaffModeHandler(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerFrozen(), this);
@@ -110,6 +111,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new StaffChatHandler(), this);
 		Bukkit.getPluginManager().registerEvents(new AdminGui(), this);
 		Bukkit.getPluginManager().registerEvents(new FullJoin(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
 		Bukkit.getPluginManager().registerEvents(new StaffModeItemsHandler(), this);
 	}
 	private void SetUpConfig() {
