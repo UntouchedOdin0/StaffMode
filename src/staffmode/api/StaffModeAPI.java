@@ -20,6 +20,9 @@ public class StaffModeAPI
 	 * Enable / Disable Vanish
 	 */
 	public static void setVanish(Player p, boolean b) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		VanishManager.getInstance().setVanish(p, b);
 		
 	}
@@ -27,18 +30,27 @@ public class StaffModeAPI
 	 * Enable / Disable StaffMode
 	 */
 	public static void setStaffMode(Player p, boolean b) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		StaffModeManager.getInstance().setStaffMode(p, b);
 	}
 	/**
 	 * Freeze/UnFreeze Player
 	 */
 	public static void setFreeze(Player p, boolean b) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		FrozenManager.getInstance().setfrozenMode(p, b);
 	}
 	/**
 	 * Enable / Disable StaffMode
 	 */
 	public static void setStaffChat(Player p, boolean b) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		StaffChatManager.getInstance().setStaffChat(p, b);
 	}
 	/**
@@ -66,24 +78,36 @@ public class StaffModeAPI
 	 * Check If Player is in StaffCjat
 	 */
 	public static void isinStaffChat(Player p) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		StaffChatManager.getInstance().isInStaffChat(p);
 	}
 	/**
 	 * Check If Player is Frozen
 	 */
 	public static void isfrozen(Player p) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		FrozenManager.getInstance().isfrozen(p);
 	}
 	/**
 	 * Check If Player Is In StaffMode
 	 */
 	public static void isInStaffMode(Player p) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		StaffModeManager.getInstance().isInStaffMode(p);
 	}
 	/**
 	 * Enable / Disable Vanish
 	 */
 	public static void isVanished(Player p) {
+		if (p == null) {
+			System.out.println("Could Not Find Player");
+		} else
 		VanishManager.getInstance().isVanished(p);
 		
 	}

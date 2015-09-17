@@ -17,6 +17,7 @@ import staffmode.cmds.EnderChest;
 import staffmode.cmds.Feed;
 import staffmode.cmds.Fly;
 import staffmode.cmds.Freeze;
+import staffmode.cmds.God;
 import staffmode.cmds.Heal;
 import staffmode.cmds.Help;
 import staffmode.cmds.MuteChat;
@@ -28,7 +29,9 @@ import staffmode.cmds.TpHere;
 import staffmode.cmds.VanishCommand;
 import staffmode.cmds.Warn;
 import staffmode.cmds.WorkBench;
+import staffmode.listeners.CustomCommandsHandler;
 import staffmode.listeners.FullJoin;
+import staffmode.listeners.GodHandler;
 import staffmode.listeners.PlayerChat;
 import staffmode.listeners.PlayerFrozen;
 import staffmode.listeners.PlayerJoin;
@@ -54,6 +57,7 @@ public class Main extends JavaPlugin {
 	
 	
 	public void onEnable() {
+		loadCustomCommandsListeners();
 		registerCommands();
 		EnableInstance();
 		loadListeners();
@@ -100,6 +104,7 @@ public class Main extends JavaPlugin {
 		getCommand("WorkBench").setExecutor(new WorkBench());
 		getCommand("EnderChest").setExecutor(new EnderChest());
 		getCommand("broadcast").setExecutor(new BroadCast());
+		getCommand("god").setExecutor(new God());
 		
 		}
 	private void loadListeners() {
@@ -113,12 +118,15 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new FullJoin(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
 		Bukkit.getPluginManager().registerEvents(new StaffModeItemsHandler(), this);
+		Bukkit.getPluginManager().registerEvents(new GodHandler(), this);
+	}
+	private void loadCustomCommandsListeners() {
+		Bukkit.getPluginManager().registerEvents(new CustomCommandsHandler(), this);
 	}
 	private void SetUpConfig() {
 		ConfigManager.getInstance().setup(this);
 		ConfigManager.getInstance().SaveConfig();
 		ConfigManager.getInstance().SaveDataConfig();
-		
 	}
 	public void set(String string, long currentTimeMillis) {
 	}
@@ -181,6 +189,7 @@ public class Main extends JavaPlugin {
             {
      
                 e.printStackTrace();
+                System.out.println("Could Not Log StaffChat... Report This Error to Author");
      
             }
             

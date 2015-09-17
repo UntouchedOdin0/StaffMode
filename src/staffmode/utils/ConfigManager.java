@@ -36,20 +36,21 @@ public class ConfigManager {
                 cfile = new File(p.getDataFolder(), "config.yml");
                 config = p.getConfig();
                 config.options().copyDefaults(true);
-                SaveConfig();
                
                 if (!p.getDataFolder().exists()) {
+        			p.getDataFolder().mkdir();
+
 
                 }
                
-                dfile = new File(p.getDataFolder(), "data.yml");
+                dfile = new File(p.getDataFolder(), "data - DO NOT EDIT.yml");
                
                 if (!dfile.exists()) {
                         try {
                                 dfile.createNewFile();
                         }
                         catch (IOException e) {
-                                Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
+                                Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data - DO NOT EDIT.yml!");
                         }
                 }
                
@@ -65,7 +66,7 @@ public class ConfigManager {
                         data.save(dfile);
                 }
                 catch (IOException e) {
-                        Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
+                        Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data - DO NOT EDIT.yml!");
                 }
         }
        
