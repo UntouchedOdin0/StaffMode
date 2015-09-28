@@ -104,11 +104,8 @@ public class StaffModeAPI
 	/**
 	 * Enable / Disable Vanish
 	 */
-	public static void isVanished(Player p) {
-		if (p == null) {
-			System.out.println("Could Not Find Player");
-		} else
-		VanishManager.getInstance().isVanished(p);
+	public static boolean isVanished(Player p) {
+		return VanishManager.getInstance().isVanished(p);
 		
 	}
 }

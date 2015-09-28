@@ -6,7 +6,6 @@ import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,12 +19,13 @@ import staffmode.utils.StaffModeManager;
 public class StaffModeItemsHandler implements Listener {
 
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void PlayerInteractCompass(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 		ItemStack PlayerHand = p.getItemInHand();
 		if (StaffModeManager.getInstance().isInStaffMode(p)) {
-			if (PlayerHand != null && PlayerHand.getType() == Material.COMPASS) {
+			if (PlayerHand != null && PlayerHand.getType().getId() == (ConfigManager.getInstance().getConfig().getInt("Items.RandomTeleport"))) {
 			List<Player> onlinePlayers = new ArrayList<Player>();
 		for (Player online : Bukkit.getOnlinePlayers()) {
 			onlinePlayers.add(online);
@@ -44,24 +44,26 @@ public class StaffModeItemsHandler implements Listener {
 		
 	
 
+		@SuppressWarnings("deprecation")
 		@EventHandler
 		public void PlayerInteractLeaveStaffMode(PlayerInteractEvent e) {
 			Player p = e.getPlayer();
 			ItemStack PlayerHand = p.getItemInHand();
 			if (StaffModeManager.getInstance().isInStaffMode(p)) {
-				if (PlayerHand != null && PlayerHand.getType() == Material.BARRIER) {
+				if (PlayerHand != null && PlayerHand.getType().getId() == (ConfigManager.getInstance().getConfig().getInt("Items.LeaveStaffMode"))) {
 		p.performCommand("StaffMode:StaffMode");
 			
 	}
 			}
 			}
 		
+		@SuppressWarnings("deprecation")
 		@EventHandler
 		public void PlayerInteractAdminGUI(PlayerInteractEvent e) {
 			Player p = e.getPlayer();
 			ItemStack PlayerHand = p.getItemInHand();
 			if (StaffModeManager.getInstance().isInStaffMode(p)) {
-				if (PlayerHand != null && PlayerHand.getType() == Material.DIAMOND_SWORD) {
+				if (PlayerHand != null && PlayerHand.getType().getId() ==(ConfigManager.getInstance().getConfig().getInt("Items.AdminGui"))) {
 		p.performCommand("StaffMode:adminGui");
 			}
 			}

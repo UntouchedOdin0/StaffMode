@@ -31,12 +31,14 @@ public class ConfigManager {
         File dfile;
         
         
+        
        
         public void setup(Plugin p) {
+    		this.p = p;
                 cfile = new File(p.getDataFolder(), "config.yml");
                 config = p.getConfig();
-                config.options().copyDefaults(true);
                
+                config.options().copyDefaults(true);
                 if (!p.getDataFolder().exists()) {
         			p.getDataFolder().mkdir();
 
@@ -47,8 +49,7 @@ public class ConfigManager {
                
                 if (!dfile.exists()) {
                         try {
-                                dfile.createNewFile();
-                        }
+                                dfile.createNewFile();                 }
                         catch (IOException e) {
                                 Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data - DO NOT EDIT.yml!");
                         }
@@ -68,11 +69,11 @@ public class ConfigManager {
                 catch (IOException e) {
                         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data - DO NOT EDIT.yml!");
                 }
-        }
-       
+      
+    }
         public void reloadData() {
                 data = YamlConfiguration.loadConfiguration(dfile);
-        }    
+        }
         public FileConfiguration getConfig() {
                 return config;
         }
