@@ -1,12 +1,12 @@
 name: StaffMode
 author: xXkguyXx
-version: 3.1.0
+version: 3.8.0
 description: This Plugin Has many UseFull Features And Commands!
-main: StaffMode.Main.Main
+main: staffmode.main.Main
 commands:
   Vanish:
     description: Enable / Disable Vanish!
-    aliases: V
+    aliases: [v, V]
   StaffMode:
     description: StaffMode. Enable Or Disable it!
     aliases: sm
@@ -53,5 +53,9 @@ commands:
     aliases: [ec]
   Broadcast:
     description: BroadCasts A Message!
-    aliases: [bc]
+    aliases: [bc, broad, b]
+  God:
+    description: Toggle God Mode!
+
+
 

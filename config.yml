@@ -25,3 +25,25 @@ Messages:
    StaffModePrefix: '&b&lStaffMode &8&l>> '
    StaffModeSeeDisable: '&b&l %PLAYER% Has &c&lDisabled &b&lStaffMode'
    StaffModeSeeEnable: '&b&l %PLAYER% Has &a&lEnabled &b&lStaffMode'
+
+Items:
+  AdminGui: 276
+  LeaveStaffMode: 166
+  RandomTeleport: 345
+  PLAYERINFORMATION: 280
+
+#NOTE......... The Custom Commands in In ALPHA. Be Warned #
+#UPDATE THE COMMANDS NUMBER IF YOU ADD MORE COMMANDS #
+Commands: '2'
+'1':
+  command: /awesome
+  permission: staffmode.awesome
+  messagetoplayer: Hi Thanks For Downloading StaffMode
+  #MESSAGE BY DEFAULT IS GREEN FOR MESSAGETOPLAYER WILL BE FIXED
+  consolecommand: broadcast &aThanks For Downloading StaffMode
+'2':
+  command: /gmc
+  permission: staffmode.testserver
+  consolecommand: gamemode 1 %player%
+  #MESSAGE BY DEFAULT IS GREEN FOR MESSAGETOPLAYER WILL BE FIXED
+  messagetoplayer: Gamemode Updated.
