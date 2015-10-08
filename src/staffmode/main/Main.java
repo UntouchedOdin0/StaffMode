@@ -37,6 +37,7 @@ import staffmode.listeners.PlayerFrozen;
 import staffmode.listeners.PlayerJoin;
 import staffmode.listeners.PlayerQuit;
 import staffmode.listeners.StaffChatHandler;
+import staffmode.listeners.StaffModeCommandHandler;
 import staffmode.listeners.StaffModeHandler;
 import staffmode.listeners.StaffModeItemsHandler;
 import staffmode.listeners.VanishHandler;
@@ -57,7 +58,6 @@ public class Main extends JavaPlugin {
 	
 	
 	public void onEnable() {
-		loadCustomCommandsListeners();
 		registerCommands();
 		EnableInstance();
 		loadListeners();
@@ -119,9 +119,9 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
 		Bukkit.getPluginManager().registerEvents(new StaffModeItemsHandler(), this);
 		Bukkit.getPluginManager().registerEvents(new GodHandler(), this);
-	}
-	private void loadCustomCommandsListeners() {
 		Bukkit.getPluginManager().registerEvents(new CustomCommandsHandler(), this);
+		Bukkit.getPluginManager().registerEvents(new StaffModeCMD(), this);
+		Bukkit.getPluginManager().registerEvents(new StaffModeCommandHandler(), this);
 	}
 	private void SetUpConfig() {
 		ConfigManager.getInstance().setup(this);

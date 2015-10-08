@@ -1,36 +1,59 @@
 package staffmode.cmds;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.server.PluginDisableEvent;
 
+import staffmode.events.PlayerStaffModeDisableEvent;
+import staffmode.events.PlayerStaffModeEnableEvent;
 import staffmode.utils.ChatMessages;
 import staffmode.utils.SaveInventory;
 import staffmode.utils.StaffModeItems;
 import staffmode.utils.StaffModeManager;
 import staffmode.utils.VanishManager;
 
-public class StaffModeCMD implements CommandExecutor {
-
-	ArrayList<String> StaffMode = new ArrayList<String>();
+public class StaffModeCMD implements CommandExecutor, Listener {
+	
 	SaveInventory si = new SaveInventory();
 	static StaffModeCMD instance = new StaffModeCMD();
+	public HashMap<UUID, Location> TimeWarpLocation = new HashMap<UUID, Location>();
 
 	public static StaffModeCMD getInstance() {
 		return instance;
 	}
-	public boolean isInStaffMode(Player p) {
-		return StaffMode.contains(p);
-	}
 	
-	
+	@EventHandler
+	public void PluginDisable(PluginDisableEvent e) {
+		for(final Player online :Bukkit.getOnlinePlayers()){
+		if (!StaffModeManager.getInstance().isInStaffMode(online)) {
+			return;
+		}
+		online.sendMessage(ChatColor.RED + "A Reload Has Forced You To Become Visiable!"); 
+		online.showPlayer(online);
+		StaffModeManager.getInstance().setStaffMode(online, false);
+		VanishManager.getInstance().setVanish(online, false);
+		online.setAllowFlight(false);
+		si.loadInventory(online);
+		online.updateInventory();
+		TimeWarpLocation.clear();
+		return;
+ 		
+	} 
 
-	@SuppressWarnings("unused")
+}
+
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String arg2,
 			String[] args) {
@@ -46,11 +69,16 @@ public class StaffModeCMD implements CommandExecutor {
 				if (!StaffModeManager.getInstance().isInStaffMode(player)) {
 					StaffModeManager.getInstance().setStaffMode(player, true);
 					VanishManager.getInstance().setVanish(player, true);
+					
 					 player.setAllowFlight(true);
 					 ChatMessages.getInstance().StaffModeEnable(player);
 					 ChatMessages.getInstance().StaffModeAllSeeEnable(sender, player);
-					 
-					
+					 online.hidePlayer(player);
+					 TimeWarpLocation.put(player.getUniqueId(), player.getPlayer().getLocation());
+					 Bukkit.getServer().getPluginManager().callEvent(new PlayerStaffModeEnableEvent(player));
+					 player.setFoodLevel(20);
+					 player.setHealth(20);
+				        player.setFireTicks(0);
 					
 					 try {
 						 si.saveInventory(player);
@@ -80,7 +108,11 @@ public class StaffModeCMD implements CommandExecutor {
 					player.updateInventory();
 					player.setAllowFlight(false);
 					si.loadInventory(player);
+					online.showPlayer(player);
 					player.updateInventory();
+					player.teleport(TimeWarpLocation.get(player.getPlayer().getUniqueId()));
+					TimeWarpLocation.remove(online);
+					 Bukkit.getServer().getPluginManager().callEvent(new PlayerStaffModeDisableEvent(player));
 					return false;
 				}
 

@@ -15,7 +15,7 @@ public class PlayerFrozen implements Listener {
 	
 	
 	  @EventHandler
-	  public void onPlayerChat(PlayerMoveEvent event) {
+	  public void onPlayerMove(PlayerMoveEvent event) {
 	    Player player = event.getPlayer();
 
 	    if (FrozenManager.getInstance().isfrozen(player)) player.teleport(player);
