@@ -26,6 +26,9 @@ Messages:
    StaffModeSeeDisable: '&b&l %PLAYER% Has &c&lDisabled &b&lStaffMode'
    StaffModeSeeEnable: '&b&l %PLAYER% Has &a&lEnabled &b&lStaffMode'
 
+Settings:
+    StaffModePrefix: true
+
 Items:
   AdminGui: 276
   LeaveStaffMode: 166

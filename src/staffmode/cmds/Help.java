@@ -39,6 +39,7 @@ public class Help implements CommandExecutor {
 	    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',  "&b&l/WorkBench")); 
 	    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',  "&b&l/Admingui"));
 	    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',  "&b&l/Broadcast"));
+	    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',  "&b&l/smr"));
 	    
 	    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b&lThank You For Using This Plugin!")); 
 		  }

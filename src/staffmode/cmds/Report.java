@@ -17,7 +17,11 @@ public class Report implements CommandExecutor {
 	
 	@Override
 public boolean onCommand(CommandSender sender, Command cmd, String arg2, String[] args)
-{
+	  {
+		 if (!(sender instanceof Player)) {
+			 sender.sendMessage(ChatColor.RED + "Players Only");
+			 return true;
+		 }
    Player p = (Player) sender;
 	 if (cmd.getName().equalsIgnoreCase("Report"))
 	      if (!sender.hasPermission("StaffMode.Report")) {

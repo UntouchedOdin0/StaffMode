@@ -107,5 +107,11 @@ public class StaffModeAPI
 	public static boolean isVanished(Player p) {
 		return VanishManager.getInstance().isVanished(p);
 		
+		/**
+		 * BroadCast Message
+		 */
 	}
+		public static void DEBUG_MESSAGE(String message) {
+	        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&8[DEBUG] &e" + message));
+		}
 }

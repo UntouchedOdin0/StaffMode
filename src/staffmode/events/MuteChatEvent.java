@@ -4,11 +4,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerVanishEnableEvent extends Event {
+public class MuteChatEvent extends Event {
 	
 	 Player p;
 	
-	 public PlayerVanishEnableEvent(Player p) {
+	 public MuteChatEvent(Player p) {
 			this.p = p;
 		}
 		

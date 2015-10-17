@@ -7,6 +7,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Server;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import staffmode.cmds.AdminGuiCMD;
@@ -24,6 +27,7 @@ import staffmode.cmds.MuteChat;
 import staffmode.cmds.Report;
 import staffmode.cmds.StaffChat;
 import staffmode.cmds.StaffModeCMD;
+import staffmode.cmds.StaffModeReload;
 import staffmode.cmds.Tp;
 import staffmode.cmds.TpHere;
 import staffmode.cmds.VanishCommand;
@@ -66,6 +70,19 @@ public class Main extends JavaPlugin {
 		Metrics();
 		Gui = new AdminGui();
 		
+	    Server server = getServer();
+	    ConsoleCommandSender console = server.getConsoleSender();
+
+		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b&m================================="));
+	    console.sendMessage("  ");
+		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b          &aStaffMode"));
+		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Coded By xXkguyXx"));
+		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Thanks To Vextricity"));
+		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Current Version: 3.9.0"));
+	    console.sendMessage("  ");
+		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b&m================================="));
+		
+		
 	}
 	public void onDisable() {
 		DisableInstance();
@@ -105,6 +122,7 @@ public class Main extends JavaPlugin {
 		getCommand("EnderChest").setExecutor(new EnderChest());
 		getCommand("broadcast").setExecutor(new BroadCast());
 		getCommand("god").setExecutor(new God());
+		getCommand("smr").setExecutor(new StaffModeReload());
 		
 		}
 	private void loadListeners() {

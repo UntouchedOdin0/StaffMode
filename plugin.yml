@@ -1,6 +1,6 @@
 name: StaffMode
 author: xXkguyXx
-version: 3.8.0
+version: 3.9.0
 description: This Plugin Has many UseFull Features And Commands!
 main: staffmode.main.Main
 commands:
@@ -54,6 +54,9 @@ commands:
   Broadcast:
     description: BroadCasts A Message!
     aliases: [bc, broad, b]
+  smr:
+    description: Reloads StaffMode!
+    aliases: staffmodereload
   God:
     description: Toggle God Mode!
 

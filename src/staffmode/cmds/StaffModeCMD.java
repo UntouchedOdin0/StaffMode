@@ -56,8 +56,12 @@ public class StaffModeCMD implements CommandExecutor, Listener {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String arg2,
-			String[] args) {
-		if (sender instanceof Player) {
+			String[] args) 
+		  {
+				 if (!(sender instanceof Player)) {
+					 sender.sendMessage(ChatColor.RED + "Players Only");
+					 return true;
+				 }
 			Player player = (Player) sender;
 			for (Player online : Bukkit.getOnlinePlayers()) {
 			if (cmd.getName().equalsIgnoreCase("StaffMode")) {
@@ -119,7 +123,7 @@ public class StaffModeCMD implements CommandExecutor, Listener {
 				}
 				
 			}
-	  }
+	  
 		return false;
 }
 }

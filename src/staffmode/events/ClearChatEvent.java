@@ -4,11 +4,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerVanishEnableEvent extends Event {
+public class ClearChatEvent extends Event {
 	
 	 Player p;
 	
-	 public PlayerVanishEnableEvent(Player p) {
+	 public ClearChatEvent(Player p) {
 			this.p = p;
 		}
 		

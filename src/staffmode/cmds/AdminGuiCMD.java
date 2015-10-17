@@ -15,6 +15,10 @@ public class AdminGuiCMD implements CommandExecutor {
 	
 	 public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
 	  {
+		 if (!(sender instanceof Player)) {
+			 sender.sendMessage(ChatColor.RED + "Players Only");
+			 return true;
+		 }
 		 Player p = (Player) sender;
 		  if (cmd.getName().equalsIgnoreCase("AdminGui")) {
 	    if (!sender.hasPermission("StaffMode.AdminGui")) {

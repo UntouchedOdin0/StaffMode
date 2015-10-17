@@ -29,8 +29,9 @@ public class CustomCommandsHandler implements Listener {
 	        		ChatMessages.getInstance().Nopermissions(p);
 	        		return;
 	        	}
+	        	e.setCancelled(true);
 	        	Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), ChatColor.translateAlternateColorCodes('&', ConsoleCommand));
-	        	
+	        	e.setCancelled(true);
 	        	p.sendMessage(ChatColor.GREEN + PlayerMessage);
 	    }
 		}
