@@ -5,7 +5,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
+import staffmode.events.BroadCastEvent;
 import staffmode.utils.ChatMessages;
 import staffmode.utils.ConfigManager;
 
@@ -16,7 +18,7 @@ public class BroadCast implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
 	  {
 
-
+        Player p = (Player) sender;
 	    if (cmd.getName().equalsIgnoreCase("BroadCast")) {
 	    if (!sender.hasPermission("StaffMode.broadcast")) {
 	    	ChatMessages.getInstance().Nopermissions(sender);
@@ -34,6 +36,7 @@ public class BroadCast implements CommandExecutor
           message = message + " " + args[ii];
           }
 
+       Bukkit.getServer().getPluginManager().callEvent(new BroadCastEvent(p));
 	        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', 
 	        		ConfigManager.getInstance()
 					.getConfig().getString("Messages.Prefix") + ChatColor.AQUA + message));

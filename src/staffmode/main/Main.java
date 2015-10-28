@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import staffmode.cmds.AdminGuiCMD;
@@ -33,6 +34,7 @@ import staffmode.cmds.TpHere;
 import staffmode.cmds.VanishCommand;
 import staffmode.cmds.Warn;
 import staffmode.cmds.WorkBench;
+import staffmode.listeners.AntiSwearHandler;
 import staffmode.listeners.CustomCommandsHandler;
 import staffmode.listeners.FullJoin;
 import staffmode.listeners.GodHandler;
@@ -59,6 +61,7 @@ public class Main extends JavaPlugin {
 	SaveInventory si = new SaveInventory();
 	protected UpdateChecker updateChecker;
 	public static Main instance;
+	PluginManager pm = Bukkit.getServer().getPluginManager();
 	
 	
 	public void onEnable() {
@@ -74,12 +77,12 @@ public class Main extends JavaPlugin {
 	    ConsoleCommandSender console = server.getConsoleSender();
 
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b&m================================="));
-	    console.sendMessage("  ");
+	    console.sendMessage("    ");
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b          &aStaffMode"));
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Coded By xXkguyXx"));
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Thanks To Vextricity"));
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Current Version: 3.9.0"));
-	    console.sendMessage("  ");
+	    console.sendMessage("    ");
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b&m================================="));
 		
 		
@@ -126,20 +129,21 @@ public class Main extends JavaPlugin {
 		
 		}
 	private void loadListeners() {
-		Bukkit.getPluginManager().registerEvents(new PlayerJoin(this), this);
-		Bukkit.getPluginManager().registerEvents(new PlayerChat(), this);
-		Bukkit.getPluginManager().registerEvents(new StaffModeHandler(), this);
-		Bukkit.getPluginManager().registerEvents(new PlayerFrozen(), this);
-		Bukkit.getPluginManager().registerEvents(new VanishHandler(), this);
-		Bukkit.getPluginManager().registerEvents(new StaffChatHandler(), this);
-		Bukkit.getPluginManager().registerEvents(new AdminGui(), this);
-		Bukkit.getPluginManager().registerEvents(new FullJoin(), this);
-		Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
-		Bukkit.getPluginManager().registerEvents(new StaffModeItemsHandler(), this);
-		Bukkit.getPluginManager().registerEvents(new GodHandler(), this);
-		Bukkit.getPluginManager().registerEvents(new CustomCommandsHandler(), this);
-		Bukkit.getPluginManager().registerEvents(new StaffModeCMD(), this);
-		Bukkit.getPluginManager().registerEvents(new StaffModeCommandHandler(), this);
+		pm.registerEvents(new PlayerJoin(this), this);
+		pm.registerEvents(new PlayerChat(), this);
+		pm.registerEvents(new StaffModeHandler(), this);
+		pm.registerEvents(new PlayerFrozen(), this);
+		pm.registerEvents(new VanishHandler(), this);
+		pm.registerEvents(new StaffChatHandler(), this);
+		pm.registerEvents(new AdminGui(), this);
+		pm.registerEvents(new FullJoin(), this);
+		pm.registerEvents(new PlayerQuit(), this);
+		pm.registerEvents(new StaffModeItemsHandler(), this);
+		pm.registerEvents(new GodHandler(), this);
+		pm.registerEvents(new CustomCommandsHandler(), this);
+		pm.registerEvents(new StaffModeCMD(), this);
+		pm.registerEvents(new StaffModeCommandHandler(), this);
+		pm.registerEvents(new AntiSwearHandler(), this);
 	}
 	private void SetUpConfig() {
 		ConfigManager.getInstance().setup(this);

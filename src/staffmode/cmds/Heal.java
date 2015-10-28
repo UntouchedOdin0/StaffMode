@@ -1,11 +1,13 @@
 package staffmode.cmds;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import staffmode.events.BroadCastEvent;
 import staffmode.utils.ChatMessages;
 
 public class Heal implements CommandExecutor {
@@ -35,6 +37,7 @@ public class Heal implements CommandExecutor {
 
 					sender.sendMessage(ChatColor.GOLD + "You Healed "
 							+ ChatColor.GREEN + target.getDisplayName());
+				       Bukkit.getServer().getPluginManager().callEvent(new BroadCastEvent(target));
 				}
 
 			} else if (args.length >= 2) {
@@ -54,6 +57,7 @@ public class Heal implements CommandExecutor {
 
 			p.setHealth(20);
 			ChatMessages.getInstance().Heal(sender);
+		       Bukkit.getServer().getPluginManager().callEvent(new BroadCastEvent(p));
 		}
 		return false;
 	}

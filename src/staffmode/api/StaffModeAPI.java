@@ -2,6 +2,7 @@ package staffmode.api;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import staffmode.utils.ChatManager;
@@ -107,11 +108,20 @@ public class StaffModeAPI
 	public static boolean isVanished(Player p) {
 		return VanishManager.getInstance().isVanished(p);
 		
-		/**
-		 * BroadCast Message
-		 */
 	}
-		public static void DEBUG_MESSAGE(String message) {
-	        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&8[DEBUG] &e" + message));
+	
+	/**
+	 * Get A Players Ping
+	 */
+	  public int getPing(Player p)
+	  {
+	    return ((CraftPlayer)p).getHandle().ping;
+	  }
+		
+		/**
+		 * DEBUG Message
+		 */
+    public static void DEBUG_MESSAGE(String message) {
+        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&8[DEBUG] &e" + message));
 		}
 }
