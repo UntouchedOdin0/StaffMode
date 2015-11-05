@@ -11,7 +11,7 @@ import staffmode.utils.FrozenManager;
 
 
 
-public class PlayerFrozen implements Listener {
+public class PlayerFrozenHandler implements Listener {
 	
 	
 	  @EventHandler

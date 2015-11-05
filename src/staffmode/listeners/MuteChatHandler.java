@@ -11,7 +11,7 @@ import staffmode.utils.ConfigManager;
 
 
 
-public class PlayerChat implements Listener {
+public class MuteChatHandler implements Listener {
 
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent e) {

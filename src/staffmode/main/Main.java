@@ -38,12 +38,11 @@ import staffmode.listeners.AntiSwearHandler;
 import staffmode.listeners.CustomCommandsHandler;
 import staffmode.listeners.FullJoin;
 import staffmode.listeners.GodHandler;
-import staffmode.listeners.PlayerChat;
-import staffmode.listeners.PlayerFrozen;
-import staffmode.listeners.PlayerJoin;
-import staffmode.listeners.PlayerQuit;
+import staffmode.listeners.MuteChatHandler;
+import staffmode.listeners.PlayerFrozenHandler;
+import staffmode.listeners.PlayerJoinHandler;
+import staffmode.listeners.PlayerQuitHandler;
 import staffmode.listeners.StaffChatHandler;
-import staffmode.listeners.StaffModeCommandHandler;
 import staffmode.listeners.StaffModeHandler;
 import staffmode.listeners.StaffModeItemsHandler;
 import staffmode.listeners.VanishHandler;
@@ -65,13 +64,13 @@ public class Main extends JavaPlugin {
 	
 	
 	public void onEnable() {
+		Gui = new AdminGui();
 		registerCommands();
 		EnableInstance();
 		loadListeners();
 		SetUpConfig();
 		Updater();
 		Metrics();
-		Gui = new AdminGui();
 		
 	    Server server = getServer();
 	    ConsoleCommandSender console = server.getConsoleSender();
@@ -81,7 +80,7 @@ public class Main extends JavaPlugin {
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b          &aStaffMode"));
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Coded By xXkguyXx"));
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Thanks To Vextricity"));
-		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Current Version: 3.9.0"));
+		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b     Current Version: 3.9.7"));
 	    console.sendMessage("    ");
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b&m================================="));
 		
@@ -129,20 +128,19 @@ public class Main extends JavaPlugin {
 		
 		}
 	private void loadListeners() {
-		pm.registerEvents(new PlayerJoin(this), this);
-		pm.registerEvents(new PlayerChat(), this);
+		pm.registerEvents(new PlayerJoinHandler(this), this);
+		pm.registerEvents(new MuteChatHandler(), this);
 		pm.registerEvents(new StaffModeHandler(), this);
-		pm.registerEvents(new PlayerFrozen(), this);
+		pm.registerEvents(new PlayerFrozenHandler(), this);
 		pm.registerEvents(new VanishHandler(), this);
 		pm.registerEvents(new StaffChatHandler(), this);
 		pm.registerEvents(new AdminGui(), this);
 		pm.registerEvents(new FullJoin(), this);
-		pm.registerEvents(new PlayerQuit(), this);
+		pm.registerEvents(new PlayerQuitHandler(), this);
 		pm.registerEvents(new StaffModeItemsHandler(), this);
 		pm.registerEvents(new GodHandler(), this);
 		pm.registerEvents(new CustomCommandsHandler(), this);
 		pm.registerEvents(new StaffModeCMD(), this);
-		pm.registerEvents(new StaffModeCommandHandler(), this);
 		pm.registerEvents(new AntiSwearHandler(), this);
 	}
 	private void SetUpConfig() {
@@ -160,6 +158,9 @@ public class Main extends JavaPlugin {
 					"[StaffMode Updater] Version " + updateChecker.getVersion()
 							+ " has been released! Download it here: "
 							+ updateChecker.getLink());
+			Bukkit.broadcastMessage("[StaffMode Updater] Version " + updateChecker.getVersion()
+							+ " has been released! Download it here: "
+							+ updateChecker.getLink());
 		}
 	}
 	@SuppressWarnings("unused")
@@ -175,7 +176,7 @@ public class Main extends JavaPlugin {
 		    } catch (IOException e) {
 		      e.printStackTrace();
 		      Bukkit.getLogger().warning(
-						"StaffMode Metrics Had A Problem Starting! Dont Worry! You May Still Use The Plugin!");
+						"StaffMode Metrics Had A Problem Starting! Dont Worry! You May Still Use The Plugin!, However Contact The Author With This Error Please.");
 		    }
 	}
 	    public void logToFile(String message)

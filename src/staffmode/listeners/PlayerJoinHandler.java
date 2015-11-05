@@ -10,15 +10,15 @@ import staffmode.main.Main;
 import staffmode.main.UpdateChecker;
 import staffmode.utils.VanishManager;
 
+public class PlayerJoinHandler implements Listener {
 
-public class PlayerJoin implements Listener {
-	
 	protected UpdateChecker updateChecker;
 	private Main main;
-	public PlayerJoin(Main main) {
+
+	public PlayerJoinHandler(Main main) {
 		this.main = main;
 	}
-	
+
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
@@ -43,7 +43,7 @@ public class PlayerJoin implements Listener {
 		} else {
 			for (Player Vanished : VanishManager.getInstance().listInVanish()) {
 				p.hidePlayer(Vanished);
+			}
 		}
-	}
 	}
 }

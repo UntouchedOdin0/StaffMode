@@ -25,9 +25,11 @@ Messages:
    StaffModePrefix: '&b&lStaffMode &8&l>> '
    StaffModeSeeDisable: '&b&l %PLAYER% Has &c&lDisabled &b&lStaffMode'
    StaffModeSeeEnable: '&b&l %PLAYER% Has &a&lEnabled &b&lStaffMode'
+   NoSwear: '&4&lDo Not Use That Language!'
 
 Settings:
     StaffModePrefix: true
+    AntiSwear: true
 
 Items:
   AdminGui: 276
@@ -35,8 +37,6 @@ Items:
   RandomTeleport: 345
   PLAYERINFORMATION: 280
 
-#NOTE......... The Custom Commands in In ALPHA. Be Warned #
-#UPDATE THE COMMANDS NUMBER IF YOU ADD MORE COMMANDS #
 Commands: '2'
 '1':
   command: /awesome
@@ -45,8 +45,18 @@ Commands: '2'
   #MESSAGE BY DEFAULT IS GREEN FOR MESSAGETOPLAYER WILL BE FIXED
   consolecommand: broadcast &aThanks For Downloading StaffMode
 '2':
-  command: /gmc
+  command: /staffmodegmc
   permission: staffmode.testserver
   consolecommand: gamemode 1 %player%
   #MESSAGE BY DEFAULT IS GREEN FOR MESSAGETOPLAYER WILL BE FIXED
   messagetoplayer: Gamemode Updated.
+
+AntiSwearWords:
+- 'fuck'
+- 'bitch'
+- 'faggot'
+- 'dick'
+- 'FUCK'
+- 'BITCH'
+- 'FAGGOT'
+- 'DICK'

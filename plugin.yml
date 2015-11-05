@@ -1,6 +1,6 @@
 name: StaffMode
 author: xXkguyXx
-version: 3.9.0
+version: 3.6.7
 description: This Plugin Has many UseFull Features And Commands!
 main: staffmode.main.Main
 commands:

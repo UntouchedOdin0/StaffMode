@@ -12,7 +12,7 @@ import staffmode.utils.StaffChatManager;
 import staffmode.utils.StaffModeManager;
 import staffmode.utils.VanishManager;
 
-public class PlayerQuit implements Listener {
+public class PlayerQuitHandler implements Listener {
 	
 	SaveInventory si = new SaveInventory();
 	
