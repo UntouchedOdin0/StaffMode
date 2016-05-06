@@ -1,0 +1,62 @@
+
+#Thank You For Downloading StaffMode!
+#Plugin Made By xXkguyXx
+#%PLAYER% Will Be Replaced With The Players Name!
+#This Plugin NO LONGER Depends On SaveInventorys!
+#Thanks To Vextricity For Contributing Some Code For Saveing Inventory!
+
+Messages:
+   Prefix: '&b&lStaffMode &8&l>> '
+   StaffChatPrefix: '&4&lStaffChat &8&l>> '
+   NoPermission: '&cNo Permission To This Command! Contact A Admin!'
+   ClearChat: '&b&lChat Has Been Clearned By %PLAYER% !'
+   MuteChat: '&cChat Has Been Muted By %PLAYER% !'
+   ReportMessageToStaff: '&c %PLAYER% &cReported %TARGET% &cFor '
+   UnMuteChat: '&bChat Has Been Un-Muted By %PLAYER% !'
+   StaffModeEnable: '&bStaff Mode &aEnabled!'
+   StaffModeDisable: '&bStaff Mode &cDisabled!'
+   VanishEnable: '&bVanish Has Been &aEnabled!'
+   VanishDisable: '&bVanish Has Been &cDisabled!'
+   ClearInventory: '&bClear &a%PLAYER% &bInventory!'
+   FlyEnable: '&bFly Has Been &aEnabled'
+   FlyDisable: '&bFly has Been &cDisabled'
+   Feed: '&b %PLAYER% &6Fed! Yum!'
+   Heal: '&b %PLAYER% &6Healed!'
+   StaffModePrefix: '&b&lStaffMode &8&l>> '
+   StaffModeSeeDisable: '&b&l %PLAYER% Has &c&lDisabled &b&lStaffMode'
+   StaffModeSeeEnable: '&b&l %PLAYER% Has &a&lEnabled &b&lStaffMode'
+   NoSwear: '&4&lDo Not Use That Language!'
+
+Settings:
+    StaffModePrefix: true
+    AntiSwear: true
+
+Items:
+  AdminGui: 276
+  LeaveStaffMode: 166
+  RandomTeleport: 345
+  PLAYERINFORMATION: 280
+
+Commands: '2'
+'1':
+  command: /awesome
+  permission: staffmode.awesome
+  messagetoplayer: Hi Thanks For Downloading StaffMode
+  #MESSAGE BY DEFAULT IS GREEN FOR MESSAGETOPLAYER WILL BE FIXED
+  consolecommand: broadcast &aThanks For Downloading StaffMode
+'2':
+  command: /staffmodegmc
+  permission: staffmode.testserver
+  consolecommand: gamemode 1 %player%
+  #MESSAGE BY DEFAULT IS GREEN FOR MESSAGETOPLAYER WILL BE FIXED
+  messagetoplayer: Gamemode Updated.
+
+AntiSwearWords:
+- 'fuck'
+- 'bitch'
+- 'faggot'
+- 'dick'
+- 'FUCK'
+- 'BITCH'
+- 'FAGGOT'
+- 'DICK'

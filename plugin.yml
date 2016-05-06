@@ -1,0 +1,64 @@
+name: StaffMode
+author: xXkguyXx
+version: 3.6.7
+description: This Plugin Has many UseFull Features And Commands!
+main: staffmode.main.Main
+commands:
+  Vanish:
+    description: Enable / Disable Vanish!
+    aliases: [v, V]
+  StaffMode:
+    description: StaffMode. Enable Or Disable it!
+    aliases: sm
+  ClearChat:
+    description: Clears Chat!
+    aliases: cc
+  Report:
+    description: Report A Player!
+  MuteChat:
+    description: Mutes Chat!
+    aliases: mc
+  StaffChat:
+    description: StaffChat! Talk Amoung Other StaffMembers!
+    aliases: sc
+  Freeze:
+    description: Freeze/UnFreeze A Player!
+  Warn:
+    description: Warn A Player.
+  Heal:
+    description: Heals A Player.
+  Feed:
+    description: Feeds a Player.
+  Fly:
+    description: Enable/Disable Fly!
+  Tp:
+    description: Teleport A Player To You!
+  TeleportHere:
+    description: Teleport A Player To You!
+    aliases: [tph, tphere]
+  ClearInventory:
+    description: Teleport A Player To You!
+    aliases: ci
+  SHelp:
+    description: Shows StaffMode Commands!
+    aliases: StaffModeHelp
+  AdminGui:
+    description: Opens a GUI For Admins!
+    aliases: [ag]
+  WorkBench:
+    description: Shows A WorkBench!
+    aliases: [wb]
+  EnderChest:
+    description: Shows A EnderChest!
+    aliases: [ec]
+  Broadcast:
+    description: BroadCasts A Message!
+    aliases: [bc, broad, b]
+  smr:
+    description: Reloads StaffMode!
+    aliases: staffmodereload
+  God:
+    description: Toggle God Mode!
+
+
+
