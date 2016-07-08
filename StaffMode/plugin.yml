@@ -33,6 +33,7 @@ commands:
     description: Enable/Disable Fly!
   Tp:
     description: Teleport A Player To You!
+    aliases: Teleport
   TeleportHere:
     description: Teleport A Player To You!
     aliases: [tph, tphere]
@@ -53,7 +54,7 @@ commands:
     aliases: [ec]
   Broadcast:
     description: BroadCasts A Message!
-    aliases: [bc, broad, b]
+    aliases: [bc, broad, b, shout]
   smr:
     description: Reloads StaffMode!
     aliases: staffmodereload
